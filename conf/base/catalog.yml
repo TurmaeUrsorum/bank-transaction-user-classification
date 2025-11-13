@@ -42,3 +42,16 @@
 raw_data_train:
   type: pandas.CSVDataset
   filepath: data/01_raw/data_train.csv
+
+raw_data_test:
+  type: pandas.CSVDataset
+  filepath: data/01_raw/data_test.csv
+
+train_df:
+  type: pandas.ParquetDataset
+  filepath: data/02_intermediate/train_df.parquet
+
+test_df:
+  type: pandas.ParquetDataset
+  filepath: data/02_intermediate/test_df.parquet
+
