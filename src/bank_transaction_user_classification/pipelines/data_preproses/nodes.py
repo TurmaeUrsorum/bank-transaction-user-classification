@@ -46,3 +46,19 @@ def handling_outliers(df: pd.DataFrame, params: tp.Dict) -> pd.DataFrame:
         df=df, columns=outliers_columns, k=params["k"], method=params["method"]
     )
     return df_train_outliers_clean
+
+
+def feature_engineering(df: pd.DataFrame) -> pd.DataFrame:
+    df = df.copy()
+
+    df["AmountToBalanceRatio"] = df["TransactionAmount"] / (df["AccountBalance"] + 1e-6)
+
+    # Flag login attempts
+    df["MultipleLoginFlag"] = (df["LoginAttempts"] > 1).astype(int)
+
+    # Kategori umur
+    df["AgeGroup"] = pd.cut(
+        df["CustomerAge"], bins=[0, 29, 50, 100], labels=["Young", "Adult", "Senior"]
+    )
+
+    return df

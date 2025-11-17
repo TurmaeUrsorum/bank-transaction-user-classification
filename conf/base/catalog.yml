@@ -55,3 +55,11 @@ test_df:
   type: pandas.ParquetDataset
   filepath: data/02_intermediate/test_df.parquet
 
+feature_eng_train:
+  type: pandas.ParquetDataset
+  filepath: data/02_intermediate/feature_eng_train.parquet
+
+feature_eng_test:
+  type: pandas.ParquetDataset
+  filepath: data/02_intermediate/feature_eng_test.parquet
+
