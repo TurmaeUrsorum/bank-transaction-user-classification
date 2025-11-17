@@ -10,3 +10,31 @@ handling_outliers:
   ]
   k: 1.5
   method: "capping"
+
+feature_engineer:
+  numeric_columns: [
+    "TransactionAmount",
+    "AccountBalance",
+    "TransactionDuration",
+    "LoginAttempts",
+    "AmountToBalanceRatio",  # hasil feature engineering
+    "MultipleLoginFlag"      # hasil feature engineering
+  ]
+  categorical_columns: [
+    "TransactionType",
+    "Channel",
+    "MerchantID",
+    "Location",
+    "CustomerOccupation",
+    "AgeGroup"
+  ]
+  simple_imputer_numeric:
+    strategy: "mean"
+    fill_value: 0
+
+  simple_imputer_categorical:
+    strategy: "most_frequent"
+    fill_value: "unknown"
+
+  one_hot_encoder:
+    sparse: False
