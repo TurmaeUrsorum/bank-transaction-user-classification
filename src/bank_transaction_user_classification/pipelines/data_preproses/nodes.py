@@ -59,31 +59,31 @@ def feature_engineering(df: pd.DataFrame) -> pd.DataFrame:
     df["MultipleLoginFlag"] = (df["LoginAttempts"] > 1).astype(int)
 
     # Kategori umur
-    df["AgeGroup"] = pd.cut(
-        df["CustomerAge"], bins=[0, 29, 50, 100], labels=["Young", "Adult", "Senior"]
-    )
+    # df["AgeGroup"] = pd.cut(
+    #     df["CustomerAge"], bins=[0, 29, 50, 100], labels=["Young", "Adult", "Senior"]
+    # )
 
     return df
 
 
-def handling_imputer(df: pd.DataFrame, params: tp.Dict) -> tp.Tuple:
-    df = df.copy()
+# def handling_imputer(df: pd.DataFrame, params: tp.Dict) -> tp.Tuple:
+#     df = df.copy()
 
-    numeric_columns = params["numeric_columns"]
-    categorical_columns = params["categorical_columns"]
+#     numeric_columns = params["numeric_columns"]
+#     categorical_columns = params["categorical_columns"]
 
-    # ambil konfigurasi imputer
-    numeric_cfg = params["simple_imputer_numeric"]
-    categorical_cfg = params["simple_imputer_categorical"]
+#     # ambil konfigurasi imputer
+#     numeric_cfg = params["simple_imputer_numeric"]
+#     categorical_cfg = params["simple_imputer_categorical"]
 
-    # 1. Imputer
-    numeric_imputer = SimpleImputer(strategy=numeric_cfg["strategy"])
-    categorical_imputer = SimpleImputer(strategy=categorical_cfg["strategy"])
+#     # 1. Imputer
+#     numeric_imputer = SimpleImputer(strategy=numeric_cfg["strategy"])
+#     categorical_imputer = SimpleImputer(strategy=categorical_cfg["strategy"])
 
-    numeric_imputed = numeric_imputer.fit_transform(df[numeric_columns])
-    categorical_imputed = categorical_imputer.fit_transform(df[categorical_columns])
+#     numeric_imputed = numeric_imputer.fit_transform(df[numeric_columns])
+#     categorical_imputed = categorical_imputer.fit_transform(df[categorical_columns])
 
-    return (numeric_imputed, categorical_imputed)
+#     return (numeric_imputed, categorical_imputed)
 
 
 def encoder_scaler(
@@ -114,12 +114,14 @@ def data_preproses(df: pd.DataFrame, params: tp.Dict) -> pd.DataFrame:
     numeric_columns = params["numeric_columns"]
     categorical_columns = params["categorical_columns"]
 
-    numeric_imputed, categorical_imputed = handling_imputer(df, params)
+    # numeric_imputed, categorical_imputed = handling_imputer(df, params)
 
-    numeric_df = pd.DataFrame(numeric_imputed, columns=numeric_columns)
-    categorical_df = pd.DataFrame(categorical_imputed, columns=categorical_columns)
+    # numeric_df = pd.DataFrame(numeric_imputed, columns=numeric_columns)
+    # categorical_df = pd.DataFrame(categorical_imputed, columns=categorical_columns)
 
-    onehot_df, numeric_scaled_df = encoder_scaler(numeric_df, categorical_df, params)
+    onehot_df, numeric_scaled_df = encoder_scaler(
+        df[numeric_columns], df[categorical_columns], params
+    )
 
     df_combined = pd.concat([numeric_scaled_df, onehot_df], axis=1)
 

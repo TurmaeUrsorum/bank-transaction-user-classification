@@ -23,10 +23,10 @@ feature_engineer:
   categorical_columns: [
     "TransactionType",
     "Channel",
-    "MerchantID",
-    "Location",
-    "CustomerOccupation",
-    "AgeGroup"
+    # "MerchantID",
+    # "Location",
+    "CustomerOccupation"
+    # "AgeGroup" # hasil feature engineering
   ]
   simple_imputer_numeric:
     strategy: "mean"
