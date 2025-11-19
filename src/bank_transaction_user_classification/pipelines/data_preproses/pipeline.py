@@ -4,7 +4,12 @@ generated using Kedro 1.0.0
 """
 
 from kedro.pipeline import Node, Pipeline, node  # noqa
-from .nodes import handling_outliers, feature_engineering, data_preproses, final_data_cleaning
+from .nodes import (
+    handling_outliers,
+    feature_engineering,
+    data_preproses,
+    final_data_cleaning,
+)
 
 
 def create_pipeline(**kwargs) -> Pipeline:
@@ -57,6 +62,6 @@ def create_pipeline(**kwargs) -> Pipeline:
                 inputs="test_df_final",
                 outputs="test_df_final_cleaned",
                 name="test_df_final_cleaned_node",
-            )
+            ),
         ]
     )

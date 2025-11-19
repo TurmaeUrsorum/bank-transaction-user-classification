@@ -131,6 +131,7 @@ def data_preproses(df: pd.DataFrame, params: tp.Dict) -> pd.DataFrame:
 
     return df_final
 
+
 def final_data_cleaning(df: pd.DataFrame) -> pd.DataFrame:
     df = df.drop_duplicates()
     df = df.dropna()
