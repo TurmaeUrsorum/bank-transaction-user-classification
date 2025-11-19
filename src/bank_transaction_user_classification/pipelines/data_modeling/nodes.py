@@ -4,9 +4,12 @@ generated using Kedro 1.0.0
 """
 
 from xgboost import XGBClassifier
+import joblib
 import logging
 import pandas as pd
 import typing as tp
+
+logger = logging.getLogger(__name__)
 
 
 def data_conf(
@@ -41,7 +44,6 @@ def train_model(
         colsample_bytree=params["colsample_bytree"],
     )
     clf_model.fit(X_train, y_train)
-    logger = logging.getLogger(__name__)
     logger.info(f"Train accuracy: {clf_model.score(X_train, y_train)}")
     logger.info(f"Test accuracy: {clf_model.score(X_test, y_test)}")
     return clf_model

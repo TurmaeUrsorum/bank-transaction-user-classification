@@ -67,3 +67,11 @@ test_df_final_cleaned:
   type: pandas.ParquetDataset
   filepath: data/05_model_input/test_df_final_cleaned.parquet
 
+model_XGBClassifier:
+  type: pickle.PickleDataset
+  filepath: data/06_models/model_XGBClassifier.pkl
+  backend: joblib
+  versioned: true
+  save_args:
+    compress: 3
+
