@@ -45,5 +45,3 @@ def train_model(
     logger.info(f"Train accuracy: {clf_model.score(X_train, y_train)}")
     logger.info(f"Test accuracy: {clf_model.score(X_test, y_test)}")
     return clf_model
-
-

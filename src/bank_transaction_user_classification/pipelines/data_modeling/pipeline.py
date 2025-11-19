@@ -18,9 +18,15 @@ def create_pipeline(**kwargs) -> Pipeline:
             ),
             node(
                 func=train_model,
-                inputs=["X_train", "X_test", "y_train", "y_test", "params:XGBClassifier"],
+                inputs=[
+                    "X_train",
+                    "X_test",
+                    "y_train",
+                    "y_test",
+                    "params:XGBClassifier",
+                ],
                 outputs="model_XGBClassifier",
                 name="train_model_node",
-            )
+            ),
         ]
     )
