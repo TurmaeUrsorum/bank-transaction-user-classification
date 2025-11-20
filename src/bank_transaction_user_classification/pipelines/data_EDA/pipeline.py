@@ -13,7 +13,7 @@ from .nodes import (
     plot_location,
     plot_channel,
     plot_customer_occupation,
-    cramer_v_matrix
+    cramer_v_matrix,
 )
 
 
@@ -127,6 +127,6 @@ def create_pipeline(**kwargs) -> Pipeline:
                 inputs="test_df",
                 outputs="cramer_v_matrix_test_fig",
                 name="cramer_v_matrix_test_node",
-            )
+            ),
         ]
     )

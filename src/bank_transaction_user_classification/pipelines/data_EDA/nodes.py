@@ -103,10 +103,7 @@ def plot_location(df: pd.DataFrame) -> Figure:
     fig = plt.figure(figsize=(20, 10))
 
     top5 = (
-        df_categorical["Location"]
-        .value_counts()
-        .sort_values(ascending=False)
-        .head(5)
+        df_categorical["Location"].value_counts().sort_values(ascending=False).head(5)
     )
 
     plt.barh(
@@ -119,6 +116,7 @@ def plot_location(df: pd.DataFrame) -> Figure:
     plt.xlabel("Count")
     plt.title("Top 5 Locations")
     return fig
+
 
 def plot_channel(df: pd.DataFrame) -> Figure:
     df = df.copy()
@@ -137,6 +135,7 @@ def plot_channel(df: pd.DataFrame) -> Figure:
 
     return fig
 
+
 def plot_customer_occupation(df: pd.DataFrame) -> Figure:
     df = df.copy()
     df_categorical = df_categorical_convert(df)
@@ -154,32 +153,37 @@ def plot_customer_occupation(df: pd.DataFrame) -> Figure:
 
     return fig
 
+
 def cramers_v(x, y):
     confusion_matrix = pd.crosstab(x, y)
     chi2 = chi2_contingency(confusion_matrix)[0]
     n = confusion_matrix.sum().sum()
-    phi2 = chi2/n
+    phi2 = chi2 / n
     r, k = confusion_matrix.shape
-    phi2corr = max(0, phi2 - ((k-1)*(r-1))/(n-1))    
-    rcorr = r - ((r-1)**2)/(n-1)
-    kcorr = k - ((k-1)**2)/(n-1)
-    return np.sqrt(phi2corr / min((kcorr-1), (rcorr-1)))
+    phi2corr = max(0, phi2 - ((k - 1) * (r - 1)) / (n - 1))
+    rcorr = r - ((r - 1) ** 2) / (n - 1)
+    kcorr = k - ((k - 1) ** 2) / (n - 1)
+    return np.sqrt(phi2corr / min((kcorr - 1), (rcorr - 1)))
+
 
 def cramer_v_matrix(df: pd.DataFrame) -> Figure:
     df = df.copy()
     df_categorical = df_categorical_convert(df)
     cat_cols = ["TransactionType", "Location", "Channel", "CustomerOccupation"]
 
-    matrix = pd.DataFrame(np.zeros((len(cat_cols), len(cat_cols))), 
-                        index=cat_cols, columns=cat_cols)
+    matrix = pd.DataFrame(
+        np.zeros((len(cat_cols), len(cat_cols))), index=cat_cols, columns=cat_cols
+    )
 
     for col1 in cat_cols:
         for col2 in cat_cols:
             if col1 != col2:
-                matrix.loc[col1, col2] = cramers_v(df_categorical[col1], df_categorical[col2])
+                matrix.loc[col1, col2] = cramers_v(
+                    df_categorical[col1], df_categorical[col2]
+                )
 
     fig = plt.figure(figsize=(8, 6))
-    plt.figure(figsize=(8,6))
+    plt.figure(figsize=(8, 6))
     sns.heatmap(matrix, annot=True, cmap="coolwarm", vmin=0, vmax=1)
     plt.title("Cramer's V Correlation (Categorical Variables)")
     plt.tight_layout()
