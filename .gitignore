@@ -161,3 +161,9 @@ venv.bak/
 mlruns/*
 
 test.ipynb
+
+models/**
+!models/**/
+reports/**
+!reports/**/
+!.gitkeep

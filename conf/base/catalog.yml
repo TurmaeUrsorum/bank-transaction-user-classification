@@ -69,7 +69,7 @@ test_df_final_cleaned:
 
 model_XGBClassifier:
   type: pickle.PickleDataset
-  filepath: data/06_models/model_XGBClassifier.pkl
+  filepath: models/model_XGBClassifier.pkl
   backend: joblib
   versioned: true
   save_args:
