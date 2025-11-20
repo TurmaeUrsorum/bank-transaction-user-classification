@@ -67,6 +67,14 @@ test_df_final_cleaned:
   type: pandas.ParquetDataset
   filepath: data/05_model_input/test_df_final_cleaned.parquet
 
+X_test:
+  type: pandas.ParquetDataset
+  filepath: data/05_model_input/X_test.parquet
+
+y_test:
+  type: pandas.ParquetDataset
+  filepath: data/05_model_input/y_test.parquet
+
 model_XGBClassifier:
   type: pickle.PickleDataset
   filepath: models/model_XGBClassifier.pkl
@@ -74,4 +82,10 @@ model_XGBClassifier:
   versioned: true
   save_args:
     compress: 3
+
+cm_fig:
+  type: matplotlib.MatplotlibWriter
+  filepath: reports/data_evaluasi/confusion_matrix.png
+  save_args:
+    format: png
 

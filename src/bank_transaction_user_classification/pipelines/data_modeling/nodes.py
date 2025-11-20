@@ -14,12 +14,14 @@ logger = logging.getLogger(__name__)
 
 def data_conf(
     df_train: pd.DataFrame, df_test: pd.DataFrame
-) -> tp.Tuple[pd.DataFrame, pd.DataFrame, pd.Series, pd.Series]:
+) -> tp.Tuple[pd.DataFrame, pd.DataFrame, pd.Series, pd.DataFrame]:
     X_train = df_train.drop(columns=["Cluster"])
     y_train = df_train["Cluster"]
 
     X_test = df_test.drop(columns=["Cluster"])
     y_test = df_test["Cluster"]
+
+    y_test = y_test.to_frame(name="Cluster")
 
     return X_train, X_test, y_train, y_test
 

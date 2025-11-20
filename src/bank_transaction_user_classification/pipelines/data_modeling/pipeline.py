@@ -27,6 +27,6 @@ def create_pipeline(**kwargs) -> Pipeline:
                 ],
                 outputs="model_XGBClassifier",
                 name="train_model_node",
-            )
+            ),
         ]
     )
