@@ -1,100 +1,47 @@
-# bank-transaction-user-classification
+# bank transaction user classification
 
 [![Powered by Kedro](https://img.shields.io/badge/powered_by-kedro-ffc900?logo=kedro)](https://kedro.org)
+![NumPy](https://img.shields.io/badge/numpy-013243?logo=numpy&logoColor=white)
+![Pandas](https://img.shields.io/badge/pandas-150458?logo=pandas&logoColor=white)
+![Scikit-Learn](https://img.shields.io/badge/scikit--learn-F7931E?logo=scikitlearn&logoColor=white)
+![XGBoost](https://img.shields.io/badge/XGBoost-EB5E28?logo=xgboost&logoColor=white)
+![Matplotlib](https://img.shields.io/badge/matplotlib-11557C?logo=plotly&logoColor=white)
+![Seaborn](https://img.shields.io/badge/seaborn-4C72B0)
 
-## Overview
+![License](https://img.shields.io/badge/license-MIT-green)
+![Status](https://img.shields.io/badge/status-active-success)
 
-This is your new Kedro project, which was generated using `kedro 1.0.0`.
 
-Take a look at the [Kedro documentation](https://docs.kedro.org) to get started.
+## Deskripsi
 
-## Rules and guidelines
+Penjelasan komprehensif tentang projek data science ini. 
+### **Masalah Bisnis**
+Bank memiliki jumlah nasabah yang besar dengan pola transaksi yang sangat beragam. Tanpa pemahaman mendalam tentang perilaku transaksi, sulit untuk
 
-In order to get the best out of the template:
+* Mengidentifikasi segmen nasabah yang berbeda.
+* Menawarkan produk yang tepat.
+* Mengurangi risiko churn (nasabah berhenti menggunakan layanan).
+* Meningkatkan efektivitas pemasaran dan manajemen risiko.
+  
+### **Tujuan Utama**
+Mengelompokkan nasabah berdasarkan pola transaksi mereka (misalnya frekuensi transaksi, jenis transaksi, nominal, merchant, dsb.) menggunakan algoritma classification agar bank memahami karakteristik masing-masing segmen yang telah di hasilkan dari model clustering.
 
-* Don't remove any lines from the `.gitignore` file we provide
-* Make sure your results can be reproduced by following a [data engineering convention](https://docs.kedro.org/en/stable/faq/faq.html#what-is-data-engineering-convention)
-* Don't commit data to your repository
-* Don't commit any credentials or your local configuration to your repository. Keep all your credentials and local configuration in `conf/local/`
+### **Nilai tambah**
+Hasil dari klasifikasi dapat digunakan untuk
+* **Personalisasi produk finansial** → misal kartu kredit, deposito, pinjaman, atau investment product.
+* **Efisiensi pemasaran** → kampanye bisa ditargetkan ke segmen tertentu.
+* **Mengenali nasabah berisiko tinggi** → deteksi fraud atau transaksi tidak wajar lebih cepat.
+* **Meningkatkan retensi** → strategi mempertahankan nasabah disesuaikan berdasarkan perilaku.
+* **Mendukung keputusan bisnis** → manajemen bisa melihat komposisi nasabah secara real-time.
 
-## How to install dependencies
+### **Target audience**
+* **Tim Data & Analytics** → untuk membuat model dan insight.
+* **Tim Marketing** → untuk menjalankan kampanye yang lebih tepat sasaran.
+* **Tim Product Banking** → mendesain produk sesuai kebutuhan segmen.
+* **Manajemen Bank** → bahan pengambilan keputusan.
+* (Opsional) **Tim Risk/Fraud** → memahami perilaku mencurigakan berdasarkan cluster.
 
-Declare any dependencies in `requirements.txt` for `pip` installation.
+## Business Understanding
 
-To install them, run:
-
-```
-pip install -r requirements.txt
-```
-
-## How to run your Kedro pipeline
-
-You can run your Kedro project with:
-
-```
-kedro run
-```
-
-## How to test your Kedro project
-
-Have a look at the files `tests/test_run.py` and `tests/pipelines/data_science/test_pipeline.py` for instructions on how to write your tests. Run the tests as follows:
-
-```
-pytest
-```
-
-You can configure the coverage threshold in your project's `pyproject.toml` file under the `[tool.coverage.report]` section.
-
-## Project dependencies
-
-To see and update the dependency requirements for your project use `requirements.txt`. You can install the project requirements with `pip install -r requirements.txt`.
-
-[Further information about project dependencies](https://docs.kedro.org/en/stable/kedro_project_setup/dependencies.html#project-specific-dependencies)
-
-## How to work with Kedro and notebooks
-
-> Note: Using `kedro jupyter` or `kedro ipython` to run your notebook provides these variables in scope: `catalog`, `context`, `pipelines` and `session`.
->
-> Jupyter, JupyterLab, and IPython are already included in the project requirements by default, so once you have run `pip install -r requirements.txt` you will not need to take any extra steps before you use them.
-
-### Jupyter
-To use Jupyter notebooks in your Kedro project, you need to install Jupyter:
-
-```
-pip install jupyter
-```
-
-After installing Jupyter, you can start a local notebook server:
-
-```
-kedro jupyter notebook
-```
-
-### JupyterLab
-To use JupyterLab, you need to install it:
-
-```
-pip install jupyterlab
-```
-
-You can also start JupyterLab:
-
-```
-kedro jupyter lab
-```
-
-### IPython
-And if you want to run an IPython session:
-
-```
-kedro ipython
-```
-
-### How to ignore notebook output cells in `git`
-To automatically strip out all output cell contents before committing to `git`, you can use tools like [`nbstripout`](https://github.com/kynan/nbstripout). For example, you can add a hook in `.git/config` with `nbstripout --install`. This will run `nbstripout` before anything is committed to `git`.
-
-> *Note:* Your output cells will be retained locally.
-
-## Package your Kedro project
-
-[Further information about building project documentation and packaging your project](https://docs.kedro.org/en/stable/tutorial/package_a_project.html)
+### Problem Statement
+Bank memiliki data transaksi nasabah yang sangat besar dan beragam, namun belum dimanfaatkan secara optimal untuk memahami perilaku dan kebutuhan nasabah. Akibatnya, bank kesulitan menentukan strategi pemasaran yang tepat, menawarkan produk yang relevan, serta mengidentifikasi kelompok nasabah yang berisiko tinggi atau berpotensi churn. Diperlukan sebuah model yang mampu mengelompokkan nasabah berdasarkan pola transaksi mereka sehingga bank dapat mengambil keputusan lebih cepat, tepat, dan berbasis data.
