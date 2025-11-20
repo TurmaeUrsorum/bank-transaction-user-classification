@@ -3,8 +3,130 @@ This is a boilerplate pipeline 'data_EDA'
 generated using Kedro 1.0.0
 """
 
-from kedro.pipeline import Node, Pipeline  # noqa
+from kedro.pipeline import Node, Pipeline, node  # noqa
+from .nodes import (
+    plot_skewness_check,
+    plot_outliers_check,
+    plot_correlation_heatmap,
+    plot_transaction_type,
+    plot_login_attempt,
+    plot_location,
+    plot_channel,
+    plot_customer_occupation,
+    cramer_v_matrix
+)
 
 
 def create_pipeline(**kwargs) -> Pipeline:
-    return Pipeline([])
+    return Pipeline(
+        [
+            node(
+                func=plot_skewness_check,
+                inputs="train_df",
+                outputs="skewness_check_train_fig",
+                name="plot_skewness_check_train_node",
+            ),
+            node(
+                func=plot_skewness_check,
+                inputs="test_df",
+                outputs="skewness_check_test_fig",
+                name="plot_skewness_check_test_node",
+            ),
+            node(
+                func=plot_outliers_check,
+                inputs="train_df",
+                outputs="outliers_check_train_fig",
+                name="plot_outliers_check_node",
+            ),
+            node(
+                func=plot_outliers_check,
+                inputs="test_df",
+                outputs="outliers_check_test_fig",
+                name="plot_outliers_check_test_node",
+            ),
+            node(
+                func=plot_correlation_heatmap,
+                inputs="train_df",
+                outputs="correlation_heatmap_train_fig",
+                name="plot_correlation_heatmap_node",
+            ),
+            node(
+                func=plot_correlation_heatmap,
+                inputs="test_df",
+                outputs="correlation_heatmap_test_fig",
+                name="plot_correlation_heatmap_test_node",
+            ),
+            node(
+                func=plot_transaction_type,
+                inputs="train_df",
+                outputs="transaction_type_train_fig",
+                name="plot_transaction_type_node",
+            ),
+            node(
+                func=plot_transaction_type,
+                inputs="test_df",
+                outputs="transaction_type_test_fig",
+                name="plot_transaction_type_test_node",
+            ),
+            node(
+                func=plot_login_attempt,
+                inputs="train_df",
+                outputs="login_attempt_train_fig",
+                name="plot_login_attempt_node",
+            ),
+            node(
+                func=plot_login_attempt,
+                inputs="test_df",
+                outputs="login_attempt_test_fig",
+                name="plot_login_attempt_test_node",
+            ),
+            node(
+                func=plot_location,
+                inputs="train_df",
+                outputs="location_train_fig",
+                name="plot_location_node",
+            ),
+            node(
+                func=plot_location,
+                inputs="test_df",
+                outputs="location_test_fig",
+                name="plot_location_test_node",
+            ),
+            node(
+                func=plot_channel,
+                inputs="train_df",
+                outputs="channel_train_fig",
+                name="plot_channel_node",
+            ),
+            node(
+                func=plot_channel,
+                inputs="test_df",
+                outputs="channel_test_fig",
+                name="plot_channel_test_node",
+            ),
+            node(
+                func=plot_customer_occupation,
+                inputs="train_df",
+                outputs="customer_occupation_train_fig",
+                name="plot_customer_occupation_node",
+            ),
+            node(
+                func=plot_customer_occupation,
+                inputs="test_df",
+                outputs="customer_occupation_test_fig",
+                name="plot_customer_occupation_test_node",
+            ),
+            node(
+                func=cramer_v_matrix,
+                inputs="train_df",
+                outputs="cramer_v_matrix_train_fig",
+                name="cramer_v_matrix_node",
+            ),
+            node(
+                func=cramer_v_matrix,
+                inputs="test_df",
+                outputs="cramer_v_matrix_test_fig",
+                name="cramer_v_matrix_test_node",
+            )
+        ]
+    )

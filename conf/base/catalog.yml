@@ -39,6 +39,7 @@
 # (transcoding), templating and a way to reuse arguments that are frequently repeated. See more here:
 # https://docs.kedro.org/en/stable/data/data_catalog.html
 
+#pipeline data cleaning
 raw_data_train:
   type: pandas.CSVDataset
   filepath: data/01_raw/data_train.csv
@@ -54,6 +55,115 @@ train_df:
 test_df:
   type: pandas.ParquetDataset
   filepath: data/02_intermediate/test_df.parquet
+
+# pipeline EDA
+skewness_check_train_fig:
+  type: matplotlib.MatplotlibWriter
+  filepath: reports/data_EDA/skewness_check/skewness_check_train.png
+  save_args:
+    format: png
+
+skewness_check_test_fig:
+  type: matplotlib.MatplotlibWriter
+  filepath: reports/data_EDA/skewness_check/skewness_check_test.png
+  save_args:
+    format: png
+
+outliers_check_train_fig:
+  type: matplotlib.MatplotlibWriter
+  filepath: reports/data_EDA/outliers_check/outliers_check_train.png
+  save_args:
+    format: png
+
+outliers_check_test_fig:
+  type: matplotlib.MatplotlibWriter
+  filepath: reports/data_EDA/outliers_check/outliers_check_test.png
+  save_args:
+    format: png
+
+correlation_heatmap_train_fig:
+  type: matplotlib.MatplotlibWriter
+  filepath: reports/data_EDA/correlation_heatmap/correlation_heatmap_train.png
+  save_args:
+    format: png
+
+correlation_heatmap_test_fig:
+  type: matplotlib.MatplotlibWriter
+  filepath: reports/data_EDA/correlation_heatmap/correlation_heatmap_test.png
+  save_args:
+    format: png
+
+transaction_type_train_fig:
+  type: matplotlib.MatplotlibWriter
+  filepath: reports/data_EDA/transaction_type/transaction_type_train.png
+  save_args:
+    format: png
+
+transaction_type_test_fig:
+  type: matplotlib.MatplotlibWriter
+  filepath: reports/data_EDA/transaction_type/transaction_type_test.png
+  save_args:
+    format: png
+
+login_attempt_train_fig:
+  type: matplotlib.MatplotlibWriter
+  filepath: reports/data_EDA/login_attempt/login_attempt_train.png
+  save_args:
+    format: png
+
+login_attempt_test_fig:
+  type: matplotlib.MatplotlibWriter
+  filepath: reports/data_EDA/login_attempt/login_attempt_test.png
+  save_args:
+    format: png
+
+location_train_fig:
+  type: matplotlib.MatplotlibWriter
+  filepath: reports/data_EDA/location/location_train.png
+  save_args:
+    format: png
+
+location_test_fig:
+  type: matplotlib.MatplotlibWriter
+  filepath: reports/data_EDA/location/location_test.png
+  save_args:
+    format: png
+
+channel_train_fig:
+  type: matplotlib.MatplotlibWriter
+  filepath: reports/data_EDA/channel/channel_train.png
+  save_args:
+    format: png
+
+channel_test_fig:
+  type: matplotlib.MatplotlibWriter
+  filepath: reports/data_EDA/channel/channel_test.png
+  save_args:
+    format: png
+
+customer_occupation_train_fig:
+  type: matplotlib.MatplotlibWriter
+  filepath: reports/data_EDA/customer_occupation/customer_occupation_train.png
+  save_args:
+    format: png
+
+customer_occupation_test_fig:
+  type: matplotlib.MatplotlibWriter
+  filepath: reports/data_EDA/customer_occupation/customer_occupation_test.png
+  save_args:
+    format: png
+
+cramer_v_matrix_train_fig:
+  type: matplotlib.MatplotlibWriter
+  filepath: reports/data_EDA/cramer_v_matrix/cramer_v_matrix_train.png
+  save_args:
+    format: png
+
+cramer_v_matrix_test_fig:
+  type: matplotlib.MatplotlibWriter
+  filepath: reports/data_EDA/cramer_v_matrix/cramer_v_matrix_test.png
+  save_args:
+    format: png
 
 # original_index:
 #   type: pandas.ParquetDataset

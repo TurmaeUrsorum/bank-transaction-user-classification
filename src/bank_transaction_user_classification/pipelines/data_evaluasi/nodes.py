@@ -30,7 +30,6 @@ def eval_model(model: XGBClassifier, X_test: pd.DataFrame, y_test: pd.DataFrame)
 
 def plot_cm(cm: np.ndarray) -> Figure:
     fig = plt.figure(figsize=(8, 6))
-    fig = plt.figure(figsize=(8, 6))
     sns.heatmap(cm, annot=True, cmap="coolwarm", vmin=0, vmax=1)
     plt.title("Confusion Matrix")
     plt.xlabel("Predicted")
