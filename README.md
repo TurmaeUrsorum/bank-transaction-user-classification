@@ -199,5 +199,61 @@ data_science_project/
 └── README.md
 ```
 
+## ⚙️ Instalasi dan Setup
 
+### Prerequisites
+- Python 3.8+
+- pip atau conda (direkomendasikan conda)
+
+### 1. Clone Repository
+```bash
+git clone https://github.com/TurmaeUrsorum/bank-transaction-user-classification
+cd bank-transaction-user-classification
+```
+
+### 2. Setup Environment
+
+**Option A: menggunakan conda (sangat direkomendasikan)**
+```bash
+conda env create -f environment.yml
+conda activate ds-project
+```
+
+**Option B: menggunakan pip**
+```bash
+python -m venv venv
+source venv/bin/activate  # Linux/Mac
+# atau
+venv\Scripts\activate     # Windows
+
+# harus convert sendiri ke requirements.txt
+pip install -r requirements.txt
+```
+
+## 🚀 Penggunaan
+
+### Quick Start
+
+1. Clone repository
+2. Setup environment
+3. Jalankan `kedro run`
+
+```bash
+# semua pipeline dijalankan
+kedro run
+# run kedro dengan parallel
+kedro run --runner ParallelRunner
+# run kedro spesifik pipeline
+kedro run --pipeline data_EDA
+```
+## 🔬 Metodologi
+
+### Data Preprocessing
+- **Handling Missing Values**: [Technique yang digunakan]
+- **Outlier Treatment**: [Method untuk handle outliers]
+- **Encoding**: [Label encoding, One-hot encoding, etc.]
+- **Scaling**: [Standardization/Normalization method]
+
+### Feature Engineering
+- **Created Features**: [feature yang dibuat amount to balance ratio dan multiple login flag ]
 
