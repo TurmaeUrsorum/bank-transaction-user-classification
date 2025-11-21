@@ -12,7 +12,7 @@
 ![Status](https://img.shields.io/badge/status-active-success)
 
 
-## Deskripsi
+## **📖 Deskripsi**
 ### **Masalah Bisnis**
 Bank memiliki jumlah nasabah yang besar dengan pola transaksi yang sangat beragam. Tanpa pemahaman mendalam tentang perilaku transaksi, sulit untuk
 
@@ -39,7 +39,7 @@ Hasil dari klasifikasi dapat digunakan untuk
 * **Manajemen Bank** → bahan pengambilan keputusan.
 * (Opsional) **Tim Risk/Fraud** → memahami perilaku mencurigakan berdasarkan cluster.
 
-## **Business Understanding**
+## **🎯 Business Understanding**
 
 ### **Problem Statement**
 Bank memiliki data transaksi nasabah yang sangat besar dan beragam, namun belum dimanfaatkan secara optimal untuk memahami perilaku dan kebutuhan nasabah. Akibatnya, bank kesulitan menentukan strategi pemasaran yang tepat, menawarkan produk yang relevan, serta mengidentifikasi kelompok nasabah yang berisiko tinggi atau berpotensi churn. Diperlukan sebuah model yang mampu mengelompokkan nasabah berdasarkan pola transaksi mereka sehingga bank dapat mengambil keputusan lebih cepat, tepat, dan berbasis data.
@@ -72,7 +72,7 @@ Bank memiliki data transaksi nasabah yang sangat besar dan beragam, namun belum 
 
 * Tim marketing atau risk bisa mengidentifikasi segmen dengan benar minimal **> 90%** berdasarkan rule cluster.
 
-## **Dataset**
+## **🗂️ Dataset**
 ### **Sumber Dataset**
  **Primary Source**: [Bank Transaction Dataset](https://www.kaggle.com/datasets/valakhorasani/bank-transaction-dataset-for-fraud-detection)
 
@@ -103,6 +103,101 @@ Duplicate Rows: 0%
 | AccountBalance          | float64 | Saldo rekening saat transaksi            | 0%             |
 | PreviousTransactionDate | object  | Tanggal transaksi sebelumnya             | 0%             |
 | Cluster                 | int64   | Label cluster hasil unsupervised model   | 0%             |
+
+
+## 🏗️ Struktur Projek
+```
+data_science_project/
+├── conf/                          # Configuration data catalog
+│   ├── base/                      # Base configuration
+│   │   ├── catalog.yml
+│   │   ├── parameters_data_EDA.yml
+│   │   └── parameters_model_training.yml
+│   ├── dev/                       # Development configuration
+│   │   ├── catalog.yml
+│   │   ├── parameters_data_EDA.yml
+│   │   └── parameters_model_training.yml
+│   └── prod/                      # Production configuration
+│       ├── catalog.yml
+│       ├── parameters_data_EDA.yml
+│       └── parameters_model_training.yml
+├── data/                          # Data storage
+│   ├── 01_raw/                    # data asli atau mentah
+│   │   ├── train.csv
+│   │   ├── test.csv
+│   │   └── external_data.csv
+│   ├── 02_Intermediate/           # data yang sudah clean
+│   │   ├── train_cleaned.csv
+│   │   ├── test_cleaned.csv
+│   │   └── feature_engineered.csv
+│   ├── 03_primary/                # data yang sudah siap untuk preproses
+│   └── 04_feature/                # data yang dihasilkan dari feature engineering
+|   └── 05_model_input/            # data yang siap untuk model training
+│
+├── docs/                          # Documentation
+|
+├── models/                        # Model storage
+|                      
+├── notebooks/                     # Jupyter notebooks
+│   ├── 01_eda.ipynb               # Exploratory Data Analysis
+│   ├── 02_feature_engineering.ipynb
+│   ├── 03_model_training.ipynb
+│   ├── 04_model_evaluation.ipynb
+│   └── 05_interpretation.ipynb
+│
+├── reports/                       # Report storage
+│
+├── src/
+│   ├── project_name/
+│   │   ├── __init__.py
+│   │   ├── pipelines/
+│   │   │   ├── data_cleaning/     # pipeline data cleaning/
+│   │   │   │   ├── nodes.py       # preprocess, cleaning
+│   │   │   │   └── pipeline.py
+│   │   │   ├── data_EDA/
+│   │   │   │   ├── nodes.py       # EDA, feature engineering
+│   │   │   │   └── pipeline.py
+│   │   │   ├── data_evaluation/
+│   │   │   │   ├── nodes.py       # model evaluation
+│   │   │   │   └── pipeline.py
+│   │   │   └── data_modeling/
+│   │   │   |   ├── nodes.py       # model training
+│   │   │   |   └── pipeline.py
+│   │   │   └── data_preproses/
+│   │   │       ├── nodes.py       # data preproses
+│   │   │       └── pipeline.py
+│   │   │
+│   │   ├── __main__.py            # Project entry point
+│   │   └── pipeline_registry.py   # Pipeline registry
+│   │   └── setings.py             # Project settings
+│   │  
+│   │   
+│   │       
+│   │       
+│   │       
+│   │
+│   └── setup.py                   # Project metadata
+│
+├── tests/                         # Unit tests
+│   ├── pipelines/
+|   │   ├── data_cleaning/
+│   │   ├── data_EDA/
+│   │   ├── data_evaluation/
+│   │   ├── data_modeling/
+│   │   └── data_preproses/
+│   ├── conftest.py
+│   ├── __init__.py
+│   ├── test_data.py
+│   ├── test_features.py
+│   └── test_models.py
+│
+├── environment.yml                # Conda environment
+├── pyproject.toml                 # Project configuration
+├── setup.py                       # Package setup
+├── .env.example                   # Environment variables template
+├── .gitignore
+└── README.md
+```
 
 
 
