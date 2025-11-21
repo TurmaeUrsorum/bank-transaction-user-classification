@@ -183,8 +183,9 @@ def cramer_v_matrix(df: pd.DataFrame) -> Figure:
                 )
 
     fig = plt.figure(figsize=(8, 6))
-    plt.figure(figsize=(8, 6))
-    sns.heatmap(matrix, annot=True, cmap="coolwarm", vmin=0, vmax=1)
-    plt.title("Cramer's V Correlation (Categorical Variables)")
-    plt.tight_layout()
+    ax = fig.add_subplot(111)  # <- paksa semua ke fig yang sama
+
+    sns.heatmap(matrix, annot=True, cmap="coolwarm", vmin=0, vmax=1, ax=ax)
+    ax.set_title("Cramer's V Correlation (Categorical Variables)")
+    fig.tight_layout()
     return fig
