@@ -46,6 +46,16 @@ def df_categorical():
         }
     )
 
+@pytest.fixture
+def df_cramers():
+    df = pd.DataFrame({
+        "TransactionType": ["A", "B", "A", "B"],
+        "Location": ["L1", "L2", "L1", "L2"],
+        "Channel": ["C1", "C1", "C2", "C2"],
+        "CustomerOccupation": ["O1", "O1", "O2", "O2"],
+    })
+    return df
+
 
 def test_plot_skewness(df_numeric: pd.DataFrame):
     fig = plot_skewness_check(df_numeric)
@@ -209,16 +219,9 @@ def test_cramers_v_range():
 
     assert 0.0 <= v <= 1.0
 
-def test_cramer_v_matrix():
-    # Dummy dataframe with all required categorical columns
-    df = pd.DataFrame({
-        "TransactionType": ["A", "B", "A", "B"],
-        "Location": ["L1", "L2", "L1", "L2"],
-        "Channel": ["C1", "C1", "C2", "C2"],
-        "CustomerOccupation": ["O1", "O1", "O2", "O2"],
-    })
+def test_cramer_v_matrix(df_cramers: pd.DataFrame):
 
-    fig = cramer_v_matrix(df)
+    fig = cramer_v_matrix(df_cramers)
 
     # Check the return type
     assert isinstance(fig, mpl_fig.Figure)
